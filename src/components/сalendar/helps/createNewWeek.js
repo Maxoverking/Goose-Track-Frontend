@@ -13,22 +13,6 @@ const newWeek = day => {
   // добавляем день на третью позицию массива
   return [...week.reverse(), ...middleWeek];
 };
-// import { addDays, subDays } from 'date-fns';
-
-// const newWeek = day => {
-//   const middleWeek = [];
-//   const week = [];
-//   for (let i = 1; i < 4; i++) {
-//     const dayOfCurrentWeek = subDays(day, i);
-//     week.push(dayOfCurrentWeek);
-//   }
-//   for (let i = 0; i < 4; i++) {
-//     const dayOfCurrentWeek = addDays(day, i);
-//     middleWeek.push(dayOfCurrentWeek);
-//   }
-//   // добавляем день на третью позицию массива
-//   return [...week.reverse(), ...middleWeek];
-// };
 
 //можно получить все дни текущего месяца ввиде обьекта
 const getAllDayInCalendar = arrayDays => {

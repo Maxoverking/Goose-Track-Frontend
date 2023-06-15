@@ -1,6 +1,5 @@
 import { Suspense, lazy, useEffect } from 'react';
 import { Outlet, Route, Routes } from 'react-router-dom';
-// import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
@@ -12,6 +11,7 @@ import { getCurrentDate } from '../redux/calendar/selectors';
 import { fetchTasks } from 'redux/tasks/tasksOperations';
 import { Loader } from './Loader/Loader';
 import { selectorAuthStatus } from 'redux/user/selectors';
+import { ROUTES } from 'constants/routes.constans';
 
 const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
@@ -41,9 +41,9 @@ export const App = () => {
       {status === "loading" && <Loader />}
       <Suspense>
         <Routes>
-          <Route path="/welcome" index element={<HomePage />} />
+          <Route path={ROUTES.root} index element={<HomePage />} />
           <Route
-            path="/login"
+            path={ROUTES.login}
             element={
               <RestrictedRoute
                 redirectTo={`/calendar/month/${currentDate.slice(0, 7)}`}
@@ -52,7 +52,7 @@ export const App = () => {
             }
           />
           <Route
-            path="/register"
+            path={ROUTES.register}
             element={
               <RestrictedRoute
                 redirectTo={`/calendar/month/${currentDate.slice(0, 7)}`}
@@ -63,12 +63,12 @@ export const App = () => {
           <Route
             path="/"
             element={
-              <PrivateRoute redirectTo="/welcome" component={<MainPage />} />
+              <PrivateRoute redirectTo={ROUTES.root} component={<MainPage />} />
             }
           >
-            <Route path="account" element={<UserPage />} />
+            <Route path={ROUTES.account} element={<UserPage />} />
             <Route
-              path="calendar"
+              path={ROUTES.calendar}
               element={
                 <div>
                   <Outlet />

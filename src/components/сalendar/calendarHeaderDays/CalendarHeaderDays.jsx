@@ -1,11 +1,8 @@
-
 import css from "../calendarHeaderWeek/CalendarHeaderWeek.module.scss";
 import { useEffect, useState } from "react";
-import { daysOfWeek } from "../constants/daysOfWeek";
-
+const daysOfWeek = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
 
 const CalendarHeaderDays = () => {
-
     const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
     height: window.innerHeight,

@@ -9,7 +9,6 @@ import { getCurrentDate } from "../../../redux/calendar/selectors";
 import { selectTasks } from "redux/tasks/taskSelectors";
 
 const CalendarGrid = ({theme}) => {
-
     const navigate = useNavigate();
     const dispatch = useDispatch()
     const currentDate = useSelector(getCurrentDate);
@@ -70,8 +69,6 @@ const [windowSize, setWindowSize] = useState({
                     className={`${css.box} ${theme}`}
                     onClick={
                         isCurrentMonth(item)
-                            // && (currentDateFormatted.slice(0, 10) <= item.format('YYYY-MM-DD'))
-                        
                             ?
                         () => boxClick(item)
                             :
@@ -79,7 +76,6 @@ const [windowSize, setWindowSize] = useState({
                     }>
 
                     <div className={`${css.box_wrap} ${theme}`}>
-
                         {isCurrentDay(item)
                                 ?
                             <div className={`${css.box_day} ${css.current_day} ${theme}`}>
@@ -95,7 +91,6 @@ const [windowSize, setWindowSize] = useState({
                         {dataAllMonth.filter((itemDay, i) =>
                             (item.format("YYYY-MM-DD") === moment(itemDay.taskDate).format("YYYY-MM-DD")))?.slice(0, 3)
                             .map((itemDay, i) => (
-                                // {isCurrentMonth(itemDay) ? }
                                 <p key={i} className={
                                     isCurrentMonth(item)
                                         ?

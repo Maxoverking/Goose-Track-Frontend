@@ -58,7 +58,6 @@ const CalendarHeaderWeek = () => {
                             :
                             null
                     }
-                        // {/* onClick={() => {clickDay(item)}} */}
                         to={`/calendar/day/${item.format("YYYY-MM-DD")}`}
                     >
                         <div className={`${css.days} `}>
